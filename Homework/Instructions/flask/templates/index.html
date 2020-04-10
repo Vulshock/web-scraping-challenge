@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron" style=><div class="row">
+            <div class="col text-center">
+                <h1 style="text-align: center;"> Mission to Mars</h1>
+                
+            <p><a class="btn btn-primary btn-lg" href="/../scrape" style="background-color: royalblue; font-size: large;" role="button">Scrape Mars Data</a></p>
+            </div>
+          </div>
+           
+        </div>
+        <!-- Mars News -->
+        <div calss="container">
+            <div class="row">
+                <div class="media">
+                    <div class="media-body">
+                        <h3> Latest Mars News</h3>
+                        <h5>{{mars.news_title}}</h5>
+                        <p>{{mars.news_paragraph}}</p>
+                    </div>
+                </div>
+            </div>
+
+        <div class="container">
+            <div class="row">
+            <div class="col-sm-8">
+                <h3> Mars Image</h3>
+                <img src="{{mars.image}}" style="max-width: 500px; max-height: auto;"alt="Mars"/>
+            </div>
+        </br>
+        <div class="col-sm-4 ml-auto" style="float: right;">
+            <div style="max-width: 18rem;">
+                <div>
+                    <h4 class="card-title">Current Weather on Mars</h4>
+                    <p class="card-text">{{mars.weather}}</p>
+                </div>
+            </div>
+        </br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Mars Facts</h4>
+                    {{mars.facts | safe}}
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <h4 style="padding-top: 50px; margin-top: 100px; text-align: center;">Mars Hemispheres</h4>
+        <div class="card-deck">
+            <hr>
+            <div class="col-md-12">
+                <div class="row">
+                    <!-- https://octobercms.com/docs/markup/tag-for found a way to loop for this part-->
+                    {% for hemisphere in mars.hemispheres %}
+                    <div class="col-md-12">
+                        <div style="margin: 30px;">
+                            <img class="card-img-top" src="{{hemisphere.url}}" style="width: 300px; max-height: auto;"/>
+                            <div class="card-body">
+                                <p class="card-text">{{hemisphere.title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+</html>
